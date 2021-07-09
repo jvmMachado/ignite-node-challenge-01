@@ -94,15 +94,15 @@ app.put('/todos/:id', checksExistsUserAccount, findTodoToEdit, (request, respons
   todoToEdit.title = title;
   todoToEdit.deadline = new Date(deadline);
 
-  return response.status(200).send();
+  return response.json(todoToEdit);
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, findTodoToEdit, (request, response) => {
-  const { user, todoToEdit } = request;
+  const { todoToEdit } = request;
 
   todoToEdit.done = true;
 
-  return response.status(200).send();
+  return response.json(todoToEdit);
 });
 
 app.delete('/todos/:id', checksExistsUserAccount, findTodoToEdit, (request, response) => {
